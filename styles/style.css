@@ -56,6 +56,18 @@ ol {
 
 /* Styles */
 
+.visually-hidden {
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  height: 1px;
+  overflow: hidden;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
+}
+
+/*Стили для блока content*/
+
 .content {
   display: flex;
   gap: 30px;
@@ -64,69 +76,17 @@ ol {
   align-items: flex-end;
 }
 
-.search-form {
-  display: flex;
-  justify-content: space-between;
-}
 
-.search-form__textfield {
-  font-family: inherit;
-  font-weight: 400;
-  font-size: 18px;
-  line-height: 100%;
-  color: rgba(255, 255, 255 / 0.7);
-  background-color: transparent;
-  width: 225px;
-}
-
-.search-form__label-text {
-  font-weight: 400;
-  line-height: 100%;
-}
-
-.search-form__fieldset {
-  border: none;
-}
-
-.content__list-container {
-  display: flex;
-  flex-direction: column;
-  max-height: 298px;
-  overflow-y: scroll;
-}
-
-/*
 .content__details {
-  width: 100%; в ТЗ есть
-}*/
-
-.result__video-container {
-  width: 711px;
-  height: 386px;
-  margin-bottom: 16px;
-}
-
-.result__video {
-  width: 100%;
-  height: 100%;
-  object-position: center;
-  object-fit: cover; /*надо ли...*/
+  /*width: 100%; в ТЗ есть*/
 }
 
 .content__list {
   display: flex;
-  flex-direction: column;
+  flex-direction: column; 
   gap: 30px;
-}
-
-/*.content__list-item {
   margin-bottom: 30px;
 }
-
-.content__list-item:not(:last-of-type){
-  margin-bottom: 30px;
-}
-*/
 
 .content__video-card {
   display: flex;
@@ -143,31 +103,12 @@ ol {
   flex-grow: 1;
 }
 
-
-.search-form__fieldset-title {
-  font-weight: 400;
-  font-size: 18px;
-  line-height: 100%;
-  margin-bottom: 5px;
-}
-
-.visually-hidden {
-  clip: rect(0 0 0 0);
-  clip-path: inset(50%);
-  height: 1px;
-  overflow: hidden;
-  position: absolute;
-  white-space: nowrap;
-  width: 1px;
-}
-
-.title {
-  font-family: Oswald;
-  font-weight: 700;
-  font-size: 75px;
-  line-height: 94%;
-  text-transform: uppercase;
-  margin-bottom: 26px;
+.content__list-container {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  height: 298px;
+  overflow-y: scroll;
 }
 
 .content__accent {
@@ -177,6 +118,21 @@ ol {
 .content__card-link {
   text-decoration: none;
   color: inherit;
+  display: block;
+}
+
+
+.content__card-link:focus {
+  outline: none;
+}
+
+.content__card-link:hover {
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.content__card-link:focus-visible {
+  outline: 1px solid #fff;
 }
 
 .content__video-card-title {
@@ -196,4 +152,183 @@ ol {
   -moz-line-clamp: 1;
   -ms-line-clamp: 1;
   line-clamp: 1;
+}
+
+.content__list-item {
+  padding: 0 3px;
+}
+
+.content__card-link:active,
+.content__list-item:has(.content__card-link_current) {
+  background-color: #545050;
+}
+
+
+/*Стили для блока result*/
+
+.result__video-container {
+  position: relative;
+  width: 711px;
+  height: 386px;
+  margin-bottom: 16px;
+}
+
+.result__video {
+  width: 100%;
+  height: 100%;
+  object-position: center;
+  object-fit: cover; /*надо ли...*/
+}
+
+/*Стили для блока search-form*/
+
+.search-form {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+
+.search-form__fieldset {
+  border: none;
+}
+
+.search-form__fieldset-title {
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 100%;
+  margin-bottom: 5px;
+}
+
+.search-form__checkbox-list {
+  display: flex;
+  flex-direction: row;
+  width: fit-content;
+  align-items: center;
+  gap: 15px;
+  position: relative;
+
+}
+
+.search-form__label {
+  display: flex;
+  align-items: center; /*под вопросом*/
+  gap: 5px;
+  cursor: pointer;
+}
+
+.search-form__pseudo-checkbox {
+  display: flex;
+  width: 19px;
+  height: 19px;
+  border: 1px solid #fff;
+  align-items: center;
+  justify-content: center;
+}
+
+.search-form__label:hover {
+  text-decoration-line: underline;
+}
+
+.search-form__label:has(:focus-visible) {
+  outline: 1px solid #fff;
+  outline-offset: 1px;
+}
+
+.search-form__label-text {
+  font-weight: 400;
+  line-height: 100%;
+}
+
+.search-form__label:has(.search-form__textfield):hover {
+  text-decoration: none;
+}
+
+.search-form__checkbox:checked + .search-form__pseudo-checkbox::after {
+  content: '';
+  width: 15px;
+  height: 15px;
+  background-color: #fff;
+  position: absolute;
+}
+
+.search-form__textfield {
+  font-family: inherit;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 100%;
+  /*color: rgba(255, 255, 255 / 0.7);*/
+  color: inherit;
+  background-color: transparent;
+  width: 225px;
+  border-top: 1px solid #fff;
+  border-bottom: 1px solid #fff;
+  border-right: none;
+  border-left: none;
+  appearance: none;
+}
+
+/*
+.search-form__textfield:active {
+  outline: 1px solid #fff;
+}*/
+
+.search-form__textfield:active {
+  border: 1px solid #fff;
+}
+
+.search-form__textfield:focus {
+  outline: none;
+}
+
+.search-form__textfield:hover::placeholder {
+  text-decoration: none;
+}
+
+.title {
+  font-family: Oswald;
+  font-weight: 700;
+  font-size: 75px;
+  line-height: 94%;
+  text-transform: uppercase;
+  margin-bottom: 26px;
+}
+
+.button {
+  background-color: transparent;
+  border: 1px solid #fff;
+  font-family: inherit;
+  font-weight: 700;
+  font-size: inherit;
+  line-height: 100%;
+  text-align: center;
+  color: inherit;
+  height: 34px;
+  cursor: pointer;
+}
+
+.button:hover {
+  text-decoration: underline;
+}
+
+.button:active {
+  background-color: #545050;
+}
+
+.button:focus {
+  outline: none;
+}
+
+.button:focus-visible {
+  outline: 1px solid #fff;
+  outline-offset: 1px;
+}
+
+.search-form__submit-button {
+  width: 194px;
+}
+
+.more-button {
+  width: 100%;
+  padding-top: 7px;
+  padding-bottom: 7px;
 }
