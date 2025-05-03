@@ -76,9 +76,8 @@ ol {
   align-items: flex-end;
 }
 
-
 .content__details {
-  /*width: 100%; в ТЗ есть*/
+  max-width: 399px;
 }
 
 .content__list {
@@ -108,7 +107,8 @@ ol {
   display: flex;
   flex-direction: column;
   height: 298px;
-  overflow-y: scroll;
+  overflow-y: auto;
+  overflow-x: hidden;
 }
 
 .content__accent {
@@ -120,7 +120,6 @@ ol {
   color: inherit;
   display: block;
 }
-
 
 .content__card-link:focus {
   outline: none;
@@ -136,12 +135,13 @@ ol {
 }
 
 .content__video-card-title {
-  font-family: Oswald;
+  font-family: Oswald, sans-serif;
   font-weight: 700;
   font-size: 30px;
   line-height: 100%;
   text-transform: uppercase;
   margin-bottom: 6px;
+  margin-top: 2px;
 }
 
 .content__video-card-description {
@@ -163,6 +163,14 @@ ol {
   background-color: #545050;
 }
 
+.title {
+  font-family: Oswald, sans-serif;
+  font-weight: 700;
+  font-size: 75px;
+  line-height: 94%;
+  text-transform: uppercase;
+  margin-bottom: 22px;
+}
 
 /*Стили для блока result*/
 
@@ -194,24 +202,21 @@ ol {
 
 .search-form__fieldset-title {
   font-weight: 400;
-  font-size: 18px;
+  font-size: inherit;
   line-height: 100%;
-  margin-bottom: 5px;
+  margin-bottom: 8px;
 }
 
 .search-form__checkbox-list {
   display: flex;
-  flex-direction: row;
   width: fit-content;
-  align-items: center;
   gap: 15px;
   position: relative;
-
+  margin-bottom: 5px;
 }
 
 .search-form__label {
   display: flex;
-  align-items: center; /*под вопросом*/
   gap: 5px;
   cursor: pointer;
 }
@@ -256,7 +261,6 @@ ol {
   font-weight: 400;
   font-size: 18px;
   line-height: 100%;
-  /*color: rgba(255, 255, 255 / 0.7);*/
   color: inherit;
   background-color: transparent;
   width: 225px;
@@ -266,11 +270,6 @@ ol {
   border-left: none;
   appearance: none;
 }
-
-/*
-.search-form__textfield:active {
-  outline: 1px solid #fff;
-}*/
 
 .search-form__textfield:active {
   border: 1px solid #fff;
@@ -282,15 +281,6 @@ ol {
 
 .search-form__textfield:hover::placeholder {
   text-decoration: none;
-}
-
-.title {
-  font-family: Oswald;
-  font-weight: 700;
-  font-size: 75px;
-  line-height: 94%;
-  text-transform: uppercase;
-  margin-bottom: 26px;
 }
 
 .button {
@@ -328,7 +318,8 @@ ol {
 }
 
 .more-button {
-  width: 100%;
+  width: 390px;
+  margin: 0 2px 2px;
   padding-top: 7px;
   padding-bottom: 7px;
 }
