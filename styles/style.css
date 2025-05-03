@@ -82,7 +82,7 @@ ol {
 
 .content__list {
   display: flex;
-  flex-direction: column; 
+  flex-direction: column;
   gap: 30px;
   margin-bottom: 30px;
 }
